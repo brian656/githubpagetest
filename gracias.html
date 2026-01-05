@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>¡Test Completado! – IBOutplacement</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main class="thankyou">
+        <h1>¡Test Completado!</h1>
+        <p>En breve recibirás tu diagnóstico por WhatsApp. Si deseas avanzar ahora, puedes agendar una orientación por WhatsApp.</p>
+        <p><a id="cta-wa" class="button-cta" href="https://wa.me/51902193633?text=Hola%2C%20complet%C3%A9%20el%20Test%20de%20Empleabilidad%20y%20deseo%20mi%20orientaci%C3%B3n%20de%2010%20minutos.">Agendar orientación por WhatsApp</a></p>
+    </main>
+    
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'conversion_test_completed' });
+        document.getElementById('cta-wa').addEventListener('click', function(){ window.dataLayer.push({ event: 'whatsapp_click' }); });
+    </script>
+</body>
+</html>
