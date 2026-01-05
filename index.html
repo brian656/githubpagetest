@@ -1,0 +1,397 @@
+<!-- Test de Empleabilidad - Formulario embebible (IBOutplacement)
+     Reemplaza: ENDPOINT_URL (por tu Apps Script o webhook) y THANKS_URL (URL final /gracias).
+-->
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Test de Empleabilidad — Form (Landing Page)</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <section id="iboutplacement-test">
+            <h1>TEST DE EMPLEABILIDAD EJECUTIVA – IBOUTPLACEMENT (2025)</h1>
+            <p class="lead">Bienvenido(a). Este test profesional te permitirá conocer tu nivel actual de empleabilidad como ejecutivo o profesional calificado en el mercado laboral 2025. Tu diagnóstico se enviará por correo con recomendaciones específicas según tu perfil, industria y nivel profesional. Completarlo toma entre 7 y 10 minutos.</p>
+            
+            <div class="subtitle">Sección 1 de 5</div>
+            <p class="small" style="display:none;">ExtendedForms Id (skip this field)</p>
+            <p class="small" style="display:none;"><strong>DO NOT EDIT this field or your score will not recorded.</strong></p>
+            
+            <form id="ib-form" novalidate>
+                <!-- ExtendedForms Id (campo técnico requerido por el proyecto)    -->
+                <input type="hidden" name="extended_forms_id" id="extended_forms_id" value="1">
+                <!-- DATOS PERSONALES -->
+                <fieldset>
+                    <legend>1. Datos Personales del Ejecutivo</legend>
+                    <p class="lead">Lea las preguntas e indique sus datos.</p>
+                    <div class="form-grid">
+                        <label class="field-half">Nombre y Apellidos*<input type="text" name="nombre" required aria-required="true"></label>
+                        <label class="field-half">Correo electrónico*<input type="email" name="email" required aria-required="true"></label>
+                        <label class="field-half">Teléfono / WhatsApp*<input type="tel" name="phone" required aria-required="true"></label>
+                        <label class="field-half">Ciudad y país donde resides*<input type="text" name="ciudad" required aria-required="true"></label>
+                        <label class="field-half">Edad*<input type="number" name="edad" min="16" max="120" required aria-required="true"></label>
+                        <label class="field-half">Nivel profesional*
+                            <select name="nivel_prof" required aria-required="true">
+                                <option value="">Seleccione...</option>
+                                <option>Director / Gerente General</option>
+                                <option>Gerente</option>
+                                <option>Subgerente / Jefe</option>
+                                <option>Coordinador Senior</option>
+                                <option>Especialista / Analista Senior</option>
+                                <option>Consultor Independiente</option>
+                            </select>
+                        </label>
+                    </div>
+                </fieldset>
+                
+                <fieldset>
+                    <legend>2. Nivel profesional</legend>
+                    <p class="lead">Lea los enunciados detenidamente y luego marque.</p>
+                    <div class="form-grid">
+                        <label class="field-half">Industria donde trabajas o has trabajado más tiempo *
+                            <p class="lead">Si tu caso es multisectorial, selecciona la opción "Otros" y escribe "Multisectorial" seguido de los sectores correspondientes.</p>
+                            <select name="industria" id="industria-select" required aria-required="true">
+                                <option value="">Seleccione...</option>
+                                <option>Sector primario</option>
+                                <option>Sector Secundario (Manufactura)</option>
+                                <option>Sector Terciario (Servicios)</option>
+                                <option>Otros</option>
+                            </select>
+                            <input type="text" name="industria_otros" id="industria-otros" placeholder="Especifica tu industria" style="display: none; margin-top: 8px;">
+                        </label>
+                        <label class="field-half">¿Actualmente te encuentras trabajando?*
+                            <select name="situacion" required aria-required="true"><option value="">Seleccione...</option><option>Sí</option><option>No</option><option>En transición / Pausa profesional</option></select>
+                        </label>
+                        <label class="field-half">Último salario mensual*
+                            <select name="rango_web_usd" required aria-required="true">
+                                <option value="">Seleccione...</option>
+                                <option>Menos de USD 2,000</option>
+                                <option>USD 2,000 - USD 3,500</option>
+                                <option>USD 3,500 - USD 5,000</option>
+                                <option>USD 5,000 - USD 8,000</option>
+                                <option>Más de USD 8,000</option>
+                            </select>
+                        </label>
+                    </div>
+                </fieldset>
+                
+                <!-- PREGUNTAS A1–G32 (escala 1–5) -->
+                <fieldset>
+                    <legend>3. Test (A1–G32)</legend>
+                    <p class="lead">Lea los enunciados detenidamente y luego marque. Marca del 1 al 5 según tu situación real actual (1 = Muy bajo / 5 = Muy alto).</p>
+                    <div class="form-grid">
+                        <h3 class="block-title">BLOQUE A: ESTRATEGIA Y CLARIDAD PROFESIONAL</h3>
+                        <!-- A1..A5 -->
+                        <label class="field-half">1. Tengo definida mi estrategia de búsqueda de empleo para los próximos 6 meses.
+                            <select name="A1" required aria-required="true"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+                        </label>
+                        <label class="field-half">2. Mi propuesta de valor profesional (lo que ofrezco) es clara y diferenciadora.
+                            <select name="A2" required aria-required="true"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+                        </label>
+                        <label class="field-half">3. Tengo objetivos profesionales a corto, mediano y largo plazo bien establecidos.
+                            <select name="A3" required aria-required="true"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+                        </label>
+                        <label class="field-half">4. Mi perfil profesional en redes sociales (ej. LinkedIn) está optimizado y actualizado.
+                            <select name="A4" required aria-required="true"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+                        </label>
+                        <label class="field-half">5. Comprendo perfectamente los requerimientos del puesto que deseo obtener.
+                            <select name="A5" required aria-required="true"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+                        </label>
+                        
+                        <h3 class="block-title">BLOQUE B: ENTREVISTAS Y LENGUAJE NO VERBAL</h3>
+                        <!-- B6..B10 -->
+                        <label class="field-half">6. Me siento seguro al responder preguntas complejas durante una entrevista.
+                            <select name="B6" required aria-required="true"> <option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+                        </label>
+                        <label class="field-half">7. Mi vestimenta y apariencia proyectan profesionalismo en cada interacción.
+                            <select name="B7" required aria-required="true"> <option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+                        </label>
+                        <label class="field-half">8. Mi lenguaje corporal (postura, contacto visual) es adecuado y positivo en entrevistas.
+                            <select name="B8" required aria-required="true"> <option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+                        </label>
+                        <label class="field-half">9. Puedo responder preguntas conductuales de forma clara y concisa.
+                            <select name="B9" required aria-required="true"> <option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+                        </label>
+                        <label class="field-half">10. Soy capaz de negociar mi salario y beneficios con confianza.
+                            <select name="B10" required aria-required="true"> <option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+                        </label>
+                        
+                        <h3 class="block-title">BLOQUE C: FORTALEZAS, DEBILIDADES Y AUTOCONOCIMIENTO</h3>
+                        <!-- C11..C14 -->
+                        <label class="field-half">11. Conozco mis 3 principales fortalezas y sé cómo aplicarlas en un entorno laboral.
+                            <select name="C11" required aria-required="true"> <option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+                        </label>
+                        <label class="field-half">12. Identifico mis áreas de mejora (debilidades) y tengo un plan para trabajarlas.
+                            <select name="C12" required aria-required="true"> <option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+                        </label>
+                        <label class="field-half">13. Mi nivel de autoconocimiento me permite tomar decisiones profesionales acertadas.
+                            <select name="C13" required aria-required="true"> <option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+                        </label>
+                        <label class="field-half">14. Tengo claro el tipo de cultura organizacional donde mejor me desempeño.
+                            <select name="C14" required aria-required="true"> <option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+                        </label>
+                        
+                        <h3 class="block-title">BLOQUE D: NETWORKING Y HABILIDADES COMERCIALES</h3>
+                        <!-- D15..D20 -->
+                        <label class="field-half">15. Mi red de contactos profesionales es activa y me genera oportunidades laborales.
+                            <select name="D15" required aria-required="true"> <option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+                        </label>
+                        <label class="field-half">16. Me siento cómodo al iniciar conversaciones de networking con desconocidos.
+                            <select name="D16" required aria-required="true"> <option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+                        </label>
+                        <label class="field-half">17. Sé cómo hacer un seguimiento efectivo después de un evento de networking o entrevista.
+                            <select name="D17" required aria-required="true"> <option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+                        </label>
+                        <label class="field-half">18. Domino la habilidad de iniciar y mantener una conversación productiva con desconocidos para expandir mi red de contactos.
+                            <select name="D18" required aria-required="true"> <option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+                        </label>
+                        <label class="field-half">19. Tengo habilidades sólidas para la negociación y persuasión.
+                            <select name="D19" required aria-required="true"> <option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+                        </label>
+                        <label class="field-half">20. Utilizo bases de datos o CRM para gestionar mis contactos profesionales.
+                            <select name="D20" required aria-required="true"> <option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+                        </label>
+                        
+                        <h3 class="block-title">BLOQUE E: MANEJO EMOCIONAL Y PRESIÓN</h3>
+                        <!-- E21..E24 -->
+                        <label class="field-half">21. Manejo el estrés y la presión laboral de manera efectiva sin afectar mi rendimiento.
+                            <select name="E21" required aria-required="true"> <option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+                        </label>
+                        <label class="field-half">22. Mantengo una actitud positiva y resiliente ante los rechazos o las dificultades.
+                            <select name="E22" required aria-required="true"> <option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+                        </label>
+                        <label class="field-half">23. Mi inteligencia emocional me permite relacionarme bien con diferentes tipos de personas.
+                            <select name="E23" required aria-required="true"> <option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+                        </label>
+                        <label class="field-half">24. Puedo adaptarme rápidamente a los cambios o entornos de trabajo ambiguos.
+                            <select name="E24" required aria-required="true"> <option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+                        </label>
+                        
+                        <h3 class="block-title">BLOQUE F: ACTUALIZACIÓN Y HABILIDADES DIGITALES</h3>
+                        <!-- F25..F28 -->
+                        <label class="field-half">25. Me mantengo constantemente actualizado sobre las tendencias de mi industria.
+                            <select name="F25" required aria-required="true"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+                        </label>
+                        <label class="field-half">26. Domino las herramientas digitales (software, apps) esenciales para mi área de trabajo.
+                            <select name="F26" required aria-required="true"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+                        </label>
+                        <label class="field-half">27. Tengo conocimientos básicos o intermedios en el uso de la Inteligencia Artificial (IA).
+                            <select name="F27" required aria-required="true"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+                        </label>
+                        <label class="field-half">28. Invierto tiempo y recursos en mi formación continua (cursos, certificaciones).
+                            <select name="F28" required aria-required="true"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+                        </label>
+                        
+                        <h3 class="block-title">BLOQUE G: RIESGO LABORAL Y COMPETITIVIDAD</h3>
+                        <!-- G29..G32 -->
+                        <label class="field-half">29. Tengo un plan de contingencia si mi situación laboral actual cambiara.
+                            <select name="G29" required aria-required="true"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+                        </label>
+                        <label class="field-half">30. Soy consciente de mi valor en el mercado laboral y mi nivel de competitividad.
+                            <select name="G30" required aria-required="true"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+                        </label>
+                        <label class="field-half">31. Conozco a fondo a mi competencia profesional (otras personas que aspiran a mi puesto).
+                            <select name="G31" required aria-required="true"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+                        </label>
+                        <label class="field-half">32. Estoy dispuesto a tomar riesgos calculados para impulsar mi carrera profesional.
+                            <select name="G32" required aria-required="true"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+                        </label>
+                    </div>
+                </fieldset>
+                
+                <!-- CONSENTIMIENTO Y ORIENTACIÓN -->
+                <fieldset>
+                    <legend>4. Autorización y Orientación</legend>
+                    <p class="lead">Completa esta sección para autorizar el tratamiento de los datos.</p>
+                    
+                    <div class="form-grid">
+                        <label class="field-full">
+                            Autorizo el uso de mis datos para elaborar mi diagnóstico de empleabilidad y para que me contacten con fines de orientación profesional. Podré solicitar eliminación o actualización escribiendo a privacidad@iboutplacement.com.
+                            <select name="consentimiento" required aria-required="true">
+                                <option value="">Seleccione...</option>
+                                <option>Sí</option>
+                                <option>No</option>
+                            </select>
+                        </label>
+                        
+                        <label class="field-full">
+                            ¿Deseas una Orientación Ejecutiva Gratuita de 10–12 minutos para analizar tu resultado?
+                            <select name="orientacion10" required aria-required="true">
+                                <option value="">Seleccione...</option>
+                                <option>Sí</option>
+                                <option>No</option>
+                            </select>
+                        </label>
+                    </div>
+                </fieldset>
+                
+                <!-- HIDDEN UTM FIELDS -->
+                <input type="hidden" name="utm_source" id="utm_source">
+                <input type="hidden" name="utm_medium" id="utm_medium">
+                <input type="hidden" name="utm_campaign" id="utm_campaign">
+                <input type="hidden" name="utm_content" id="utm_content">
+                <input type="hidden" name="utm_term" id="utm_term">
+                
+                <div style="margin-top:12px;">
+                    <button id="submit-btn" type="submit">Enviar Test</button>
+                </div>
+                
+                <div id="form-msg"></div>
+            </form>
+        </section>
+        
+        <script>
+        (function(){
+            // ---------- CONFIG (reemplazar) ----------
+            let ENDPOINT_URL = 'https://webhook.site/b9865240-a93d-49ea-bba9-6b4d55ce8c57'; // <-- reemplazar por Apps Script / webhook
+            const THANKS_URL = 'gracias.html'; // <-- URL final del Thank You Page (archivo local)
+            // -----------------------------------------
+            
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({ event: 'view_form' });
+            
+            // Auto-wrap question text nodes into <span class="q"> for consistent styling
+            function wrapQuestionText(){
+                document.querySelectorAll('label.field-half, label.field-full').forEach(function(lbl){
+                    if(!lbl.querySelector('.q')){
+                        for(const n of Array.from(lbl.childNodes)){
+                            if(n.nodeType===3 && n.textContent.trim()){
+                                const span = document.createElement('span');
+                                span.className = 'q';
+                                span.textContent = n.textContent.trim();
+                                n.textContent = '';
+                                lbl.insertBefore(span, lbl.firstChild);
+                                break;
+                            }
+                        }
+                    }
+                });
+            }
+            if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', wrapQuestionText); else wrapQuestionText();
+            
+            // --- Utils ---
+            function getParam(name){ const u = new URLSearchParams(location.search); return u.get(name) || ''; }
+            function showMessage(text, isError){ const el = document.getElementById('form-msg'); el.textContent = text; el.style.display = 'block'; el.style.color = isError ? getComputedStyle(document.documentElement).getPropertyValue('--danger') || '#d9534f' : 'inherit'; }
+            function hideMessage(){ const el = document.getElementById('form-msg'); el.textContent=''; el.style.display='none'; }
+            
+            // UTMs: URL -> sessionStorage -> hidden inputs
+            ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(k=>{
+                const v = getParam(k) || sessionStorage.getItem(k) || '';
+                if(v){ const el = document.getElementById(k); if(el) el.value = v; sessionStorage.setItem(k, v); }
+            });
+            
+            // ExtendedForms Id: auto-fill from URL or sessionStorage
+            const efVisible = document.querySelector('[name="extended_forms_id_visible"]');
+            const efHidden = document.querySelector('[name="extended_forms_id"]');
+            const efFromUrl = getParam('extended_forms_id') || '';
+            const efFromSession = sessionStorage.getItem('extended_forms_id') || '';
+            const efVal = efFromUrl || efFromSession || '';
+            if(efVal){ if(efHidden) efHidden.value = efVal; if(efVisible) efVisible.value = efVal; sessionStorage.setItem('extended_forms_id', efVal); }
+            
+            // Add small status banner to help testing
+            const infoEl = document.createElement('div'); infoEl.className='small'; infoEl.style.display = 'none'; infoEl.style.margin='8px 0 12px';
+            const container = document.getElementById('iboutplacement-test');
+            container.insertBefore(infoEl, container.firstChild.nextSibling);
+            
+            function updateStatus(){
+                const idSet = efHidden && efHidden.value;
+                const usingPlaceholder = ENDPOINT_URL.includes('https://webhook.site/b9865240-a93d-49ea-bba9-6b4d55ce8c57');
+                infoEl.innerHTML = `Status: ${idSet ? 'ExtendedForms Id set' : '<strong style="color:#d9534f">Missing ExtendedForms Id</strong>'} — Endpoint: ${usingPlaceholder ? '<em>placeholder (test mode)</em>' : '<em>configured</em>'}`;
+            }
+            updateStatus();
+            
+            // Debug mode: ?debug=1 will prevent actual POST and print payload in console
+            const debugMode = getParam('debug') === '1' || getParam('debug') === 'true';
+            if(debugMode) { infoEl.innerHTML += ' — <strong>DEBUG MODE</strong>'; }
+            
+            const form = document.getElementById('ib-form');
+            const msg = document.getElementById('form-msg');
+            const btn = document.getElementById('submit-btn');
+            
+            // Client validation helper
+            function validateForm(){
+                const data = new FormData(form);
+                for(const [k,v] of data.entries()){
+                    const el = form.querySelector('[name="'+k+'"]');
+                    if(v === '' && el && el.hasAttribute('required')){ return { ok:false, message: 'Por favor completa todos los campos obligatorios.' }; }
+                }
+                // ExtendedForms Id required by project
+                if(!efHidden || !efHidden.value){ 
+                    return { ok:false, message: 'ExtendedForms Id (skip this field) está vacío. El proyecto requiere este campo.' }; }
+                    return { ok:true };
+                }
+                
+                form.addEventListener('submit', async function(e){
+                    e.preventDefault(); hideMessage(); btn.disabled = true;
+                    
+                    // Refresh efHidden from session/URL in case user landed with it later
+                    const currentEF = efHidden ? (getParam('extended_forms_id') || sessionStorage.getItem('extended_forms_id') || efHidden.value) : '';
+                    if(efHidden) efHidden.value = currentEF;
+                    if(efVisible) efVisible.value = currentEF;
+                    if(currentEF) sessionStorage.setItem('extended_forms_id', currentEF);
+                    
+                    const v = validateForm();
+                    if(!v.ok){ showMessage(v.message, true); btn.disabled = false; updateStatus(); return; }
+                    
+                    const fdata = new FormData(form);
+                    const payload = {};
+                    fdata.forEach((val,key)=> payload[key]=val);
+                    
+                    // Helpful logs for debugging
+                    console.groupCollapsed('IBForm — submit payload'); console.table(payload); console.groupEnd();
+                    
+                    window.dataLayer.push({ event: 'submit_form', payload: { utm_source: payload.utm_source || '', orientacion10: payload.orientacion10 || '' } });
+                    // If endpoint is placeholder or debugMode => simulate request
+                    const simulate = debugMode || ENDPOINT_URL.includes('https://webhook.site/b9865240-a93d-49ea-bba9-6b4d55ce8c57') || ENDPOINT_URL.trim() === '';
+                    
+                    try {
+                        if(simulate){
+                            console.info('Simulating POST to endpoint (debug mode or placeholder).');
+                            // Artificial delay to simulate network
+                            await new Promise(res=>setTimeout(res, 650));
+                            // Simulate success
+                            window.dataLayer.push({ event: 'submit_success_simulated' });
+                            // In debug mode still redirect to THANKS_URL (but keep logs)
+                            if(debugMode){
+                                console.info('Debug mode: simulated submit successful — redirecting to', THANKS_URL);
+                                window.location.href = THANKS_URL;
+                                return;
+                            }
+                            window.location.href = THANKS_URL;
+                            return;
+                        }
+                        
+                        // Real request
+                        const resp = await fetch(ENDPOINT_URL, { method:'POST', headers:{ 'Content-Type':'application/json' }, body: JSON.stringify(payload) });
+                        if(!resp.ok) throw new Error('HTTP '+resp.status);
+                        
+                        // Success
+                        window.location.href = THANKS_URL;
+                    } catch(err){
+                        console.error('Error sending form:', err);
+                        showMessage('Ocurrió un error enviando el test. Intenta de nuevo o contacta soporte.', true);
+                        btn.disabled = false;
+                        updateStatus();
+                    }
+                });
+                
+                // Also expose a small function to set endpoint during testing from console: setEndpoint('https://...')
+                window.IBForm = window.IBForm || {};
+                window.IBForm.setEndpoint = function(url){ ENDPOINT_URL = url; updateStatus(); console.info('Endpoint updated:', url); };
+                
+                // Toggle visibility of "Otros" input for Industria
+                const industriaSelect = document.getElementById('industria-select');
+                const industriaOtrosInput = document.getElementById('industria-otros');
+                industriaSelect.addEventListener('change', function() {
+                    if (this.value === 'Otros') {
+                        industriaOtrosInput.style.display = 'block';
+                    } else {
+                        industriaOtrosInput.style.display = 'none';
+                        industriaOtrosInput.value = '';
+                    }
+                });
+            })();
+        </script>
+    </body>
+</html>
